@@ -24,9 +24,9 @@ public class SpringDataJpaExApplication {
 
 		Student s2 = context.getBean(Student.class);
 
-		s2.setRollNo(2);
-		s2.setName("Rahul");
-		s2.setMarks(70);
+//		s2.setRollNo(2);
+//		s2.setName("Rahul");
+//		s2.setMarks(70);
 
 		repo.save(s1);
 		repo.save(s2);
@@ -41,6 +41,13 @@ public class SpringDataJpaExApplication {
 		System.out.println(repo.findByMarks(99));
 
 		System.out.println(repo.findByMarksGreaterThan(50));
+
+		s2.setRollNo(2);
+		s2.setName("Rahul");
+		s2.setMarks(80);
+
+		repo.save(s2);			//We can use save to update data also
+		repo.delete(s1);		//for deleting a row
 
 	}
 
