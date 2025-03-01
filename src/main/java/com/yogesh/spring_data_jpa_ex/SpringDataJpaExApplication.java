@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
+import java.util.Optional;
+
 @SpringBootApplication
 public class SpringDataJpaExApplication {
 
@@ -20,7 +22,21 @@ public class SpringDataJpaExApplication {
 		s1.setName("Aman");
 		s1.setMarks(99);
 
+		Student s2 = context.getBean(Student.class);
+
+		s2.setRollNo(2);
+		s2.setName("Rahul");
+		s2.setMarks(70);
+
 		repo.save(s1);
+		repo.save(s2);
+
+		System.out.println(repo.findAll());				// Fetching all data
+
+		Optional<Student> s = repo.findById(2);  		//using Optional to secure from NPE and findById to find object using primary key
+		System.out.println(s.orElse(new Student()));
+
+
 
 	}
 
