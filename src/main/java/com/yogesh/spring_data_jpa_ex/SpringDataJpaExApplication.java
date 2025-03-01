@@ -36,7 +36,11 @@ public class SpringDataJpaExApplication {
 		Optional<Student> s = repo.findById(2);  		//using Optional to secure from NPE and findById to find object using primary key
 		System.out.println(s.orElse(new Student()));
 
+		System.out.println(repo.findByName("Rahul"));	//This will return list of values coz multiple students can have same name
 
+		System.out.println(repo.findByMarks(99));
+
+		System.out.println(repo.findByMarksGreaterThan(50));
 
 	}
 
